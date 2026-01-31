@@ -104,7 +104,7 @@ export default function EditMoviePage() {
               <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
                 {inputs.map((input) => (
                   <div key={input.name} className={`form-control w-full ${input.type === 'textarea' ? 'md:col-span-2' : ''}`}>
-                    <label className="label">
+                    <label className="label px-0 pt-0 pb-2 justify-start cursor-pointer">
                       <span className="label-text font-bold flex items-center gap-2">
                         <input.icon size={16} className="text-primary" />
                         {input.label}
