@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'https://movieapp-908u.onrender.com', // Base URL should not include /api since endpoints include it
+  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000', // Base URL should not include /api since endpoints include it
 });
 
 api.interceptors.request.use((config) => {
