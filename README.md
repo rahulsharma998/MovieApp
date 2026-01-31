@@ -227,7 +227,7 @@ NEXT_PUBLIC_API_URL=your_backend_url
 ## 🚢 Deployment
 
 * **Frontend:** Vercel
-* **Backend:** Render / Railway / EC2
+* **Backend:** Render
 * **Database:** MongoDB Atlas
 
 ---
