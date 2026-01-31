@@ -1,115 +1,105 @@
-Full-Stack Movie Management Application
+# 🎬 Full-Stack Movie Management Application
 
-A production-ready full-stack web application for managing and browsing movies with role-based access control, built using modern technologies on both backend and frontend.
+A **production-ready full-stack web application** for managing and browsing movies with **role-based access control (RBAC)**, built using **modern backend and frontend technologies**.
 
-🚀 Live Demo
+---
 
-Frontend: https://movie-app-khaki-nine.vercel.app/login
+## 🚀 Live Demo
 
-Backend API: (https://movieapp-908u.onrender.com/)
+* **Frontend:**
+  👉 [https://movie-app-khaki-nine.vercel.app/login](https://movie-app-khaki-nine.vercel.app/login)
 
-Swagger Docs: https://movieapp-908u.onrender.com/api/docs
+* **Backend API:**
+  👉 [https://movieapp-908u.onrender.com/](https://movieapp-908u.onrender.com/)
 
-🧠 Project Overview
+* **Swagger Docs:**
+  👉 [https://movieapp-908u.onrender.com/api/docs](https://movieapp-908u.onrender.com/api/docs)
 
-This application allows users to browse movies and admins to manage movie data securely.
+---
 
-Roles
+## 🧠 Project Overview
 
-User
+This application allows users to browse movies, while **admins can securely manage movie data**.
 
-View movie list
+### 👥 Roles
 
-View movie details
+#### 👤 User
 
-Admin
+* View movie list
+* View movie details
 
-Create movies
+#### 🛠 Admin
 
-Update movies
+* Create movies
+* Update movies
+* Delete movies
 
-Delete movies
+> 🔒 All write operations are **strictly protected by backend role-based access control**.
 
-All write operations are strictly protected by backend role-based access control.
+---
 
-🛠 Tech Stack
-Frontend
+## 🛠 Tech Stack
 
-Next.js (App Router)
+### 🎨 Frontend
 
-TypeScript
+* **Next.js (App Router)**
+* **TypeScript**
+* **Tailwind CSS**
+* **DaisyUI**
+* **Zustand** (state management)
+* **Axios**
+* **React-Toastify**
 
-Tailwind CSS
+### ⚙️ Backend
 
-DaisyUI
+* **Node.js**
+* **Express.js**
+* **MongoDB**
+* **Mongoose**
+* **JWT Authentication**
+* **Role-Based Access Control (RBAC)**
+* **Swagger / OpenAPI**
 
-Zustand (state management)
+---
 
-Axios
+## ✨ Features
 
-React-Toastify
+### 🔐 Authentication & Authorization
 
-Backend
+* JWT-based authentication
+* Secure password hashing
+* Role-based route protection
+* Auth persistence on refresh
 
-Node.js
+### 🎬 Movies
 
-Express.js
+* Browse movies with posters
+* Search by title
+* Filter by genre
+* Pagination support
+* Movie details page
 
-MongoDB
+### 🛠 Admin Panel
 
-Mongoose
+* Add new movies
+* Edit existing movies
+* Delete movies
+* Admin-only access enforced on backend
 
-JWT Authentication
+### 🧑‍💻 Developer Experience
 
-Role-Based Access Control (RBAC)
+* Swagger API documentation
+* Clean and scalable folder structure
+* Centralized API & state management
+* JSON-based data seeding
 
-Swagger / OpenAPI
+---
 
-✨ Features
-Authentication & Authorization
+## 🧱 Project Architecture
 
-JWT-based authentication
+### 📦 Backend Structure
 
-Secure password hashing
-
-Role-based route protection
-
-Auth persistence on refresh
-
-Movies
-
-Browse movies with posters
-
-Search by title
-
-Filter by genre
-
-Pagination
-
-Movie details page
-
-Admin Panel
-
-Add new movies
-
-Edit existing movies
-
-Delete movies
-
-Admin-only access enforced on backend
-
-Developer Experience
-
-Swagger API documentation
-
-Clean folder structure
-
-Centralized API & state logic
-
-JSON-based data seeding
-
-🧱 Project Architecture
-Backend Structure
+```
 backend/
 │── src/
 │   ├── config/
@@ -122,8 +112,11 @@ backend/
 │   └── app.js
 │── server.js
 │── .env
+```
 
-Frontend Structure
+### 🎨 Frontend Structure
+
+```
 frontend/
 │── src/
 │   ├── app/
@@ -131,37 +124,44 @@ frontend/
 │   ├── store/
 │   ├── services/
 │   └── styles/
+```
 
-🔐 Authentication Flow
+---
 
-User logs in
+## 🔐 Authentication Flow
 
-Backend returns JWT + user role
+1. User logs in
+2. Backend returns **JWT + user role**
+3. Token is stored in browser storage
+4. Token is sent with every request:
 
-Token stored in browser storage
+   ```
+   Authorization: Bearer <token>
+   ```
+5. Backend validates **token and role** on every request
 
-Token sent via Authorization: Bearer <token>
+---
 
-Backend validates token & role on every request
-
-📦 API Documentation (Swagger)
+## 📦 API Documentation (Swagger)
 
 Swagger UI is available at:
 
+```
 /api-docs
+```
 
+### Includes:
 
-Includes:
+* Authentication APIs
+* Movie CRUD APIs
+* JWT Bearer authentication
+* Role-based access details
 
-Auth APIs
+---
 
-Movie CRUD APIs
+## 🗄 Database Schema (Movie)
 
-JWT Bearer authentication
-
-Role-based access details
-
-🗄 Database Schema (Movie)
+```json
 {
   "title": "string",
   "genre": "string",
@@ -174,40 +174,71 @@ Role-based access details
   "createdAt": "date",
   "updatedAt": "date"
 }
+```
 
-🌱 Initial Data Seeding
+---
 
-Movies are seeded using a JSON seeding script instead of APIs to avoid exposing bulk write operations.
+## 🌱 Initial Data Seeding
 
+Movies are seeded using a **JSON-based seeding script** instead of APIs to avoid exposing bulk write operations.
+
+```bash
 node src/scripts/seedMovies.js
+```
 
-⚙️ Setup Instructions
-Backend
+---
+
+## ⚙️ Setup Instructions
+
+### 🔙 Backend Setup
+
+```bash
 cd backend
 npm install
 npm run dev
+```
 
+Create a `.env` file:
 
-Create .env:
-
+```env
 PORT=5000
 MONGO_URI=your_mongo_url
 JWT_SECRET=your_secret
+```
 
-Frontend
+---
+
+### 🎨 Frontend Setup
+
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
+Create a `.env.local` file:
 
-Create .env.local:
-
+```env
 NEXT_PUBLIC_API_URL=your_backend_url
+```
 
-🚢 Deployment
+---
 
-Frontend: Vercel
+## 🚢 Deployment
 
-Backend: Render / Railway / EC2
+* **Frontend:** Vercel
+* **Backend:** Render / Railway / EC2
+* **Database:** MongoDB Atlas
 
-Database: MongoDB Atlas
+---
+
+## 🧠 Key Takeaways
+
+This project demonstrates:
+
+* Clean backend architecture
+* Secure JWT authentication & RBAC
+* Modern Next.js App Router usage
+* Scalable state management with Zustand
+* Real-world API design & documentation
+* Production-ready deployment mindset
