@@ -4,7 +4,7 @@ A production-ready full-stack web application for managing and browsing movies w
 
 🚀 Live Demo
 
-Frontend: https://your-frontend-url.vercel.app
+Frontend: https://movie-app-khaki-nine.vercel.app/login
 
 Backend API: (https://movieapp-908u.onrender.com/)
 
