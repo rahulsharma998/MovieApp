@@ -63,15 +63,15 @@ export const useMovieStore = create<MovieState>((set, get) => ({
       set({ loading: false, movies: [] });
     }
   },
- fetchMovieById: async (id: string) => {
-  set({ loading: true, selectedMovie: null });
+  fetchMovieById: async (id: string) => {
+    set({ loading: true, selectedMovie: null });
 
-  try {
-    const res = await api.get(`/api/movies/${id}`);
-    set({ selectedMovie: res.data, loading: false });
-  } catch {
-    set({ loading: false });
-  }
+    try {
+      const res = await api.get(`/api/movies/${id}`);
+      set({ selectedMovie: res.data.data || res.data, loading: false });
+    } catch {
+      set({ loading: false });
+    }
   },
   createMovie: async (data) => {
     set({ loading: true });

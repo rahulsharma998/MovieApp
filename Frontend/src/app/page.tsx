@@ -7,7 +7,6 @@ import { Film, ArrowRight, Play, Clapperboard } from 'lucide-react';
 export default function Home() {
   return (
     <div className="min-h-screen relative flex items-center justify-center overflow-hidden bg-base-200">
-      {/* Dynamic Background */}
       <div className="absolute top-0 left-0 w-full h-full -z-10">
         <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-primary/20 blur-[150px] rounded-full animate-pulse" />
         <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-secondary/20 blur-[150px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />

@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import MovieCard from "@/components/MovieCard";
 import { useMovieStore } from "@/store/movieStore";
-import { Search, Filter, ChevronLeft, ChevronRight, Loader2, SlidersHorizontal } from "lucide-react";
+import { Search, Filter, ChevronLeft, ChevronRight, SlidersHorizontal } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useDebounce } from "@/hooks/useDebounce";
 
 export default function MoviesPage() {
   const {
@@ -18,6 +19,13 @@ export default function MoviesPage() {
     fetchMovies
   } = useMovieStore();
 
+  const [searchTerm, setSearchTerm] = useState(search);
+  const debouncedSearch = useDebounce(searchTerm, 500);
+
+  useEffect(() => {
+    fetchMovies({ search: debouncedSearch, page: 1 });
+  }, [debouncedSearch, fetchMovies]);
+
   useEffect(() => {
     fetchMovies();
   }, [fetchMovies]);
@@ -25,7 +33,6 @@ export default function MoviesPage() {
   return (
     <ProtectedRoute>
       <main className="max-w-7xl mx-auto px-6 py-8 space-y-8">
-        {/* Hero / Header Section */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -37,17 +44,15 @@ export default function MoviesPage() {
           <p className="text-base-content/60 max-w-2xl text-lg">
             Discover your next favorite film. Filter by genre, search by title, or just browse our curated collection.
           </p>
-          {/* Decorative Elements */}
           <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-3xl animate-pulse" />
           <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-700" />
         </motion.div>
 
-        {/* Filters Bar */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="flex flex-col md:flex-row gap-4 items-center justify-between p-4 glass-card rounded-2xl"
+          className="flex flex-col md:flex-row gap-4 items-center justify-between p-4 bg-base-100 border border-base-content/10 shadow-lg rounded-2xl"
         >
           <div className="relative w-full md:max-w-md group">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 opacity-40 group-focus-within:opacity-100 group-focus-within:text-primary transition-all" size={18} />
@@ -55,8 +60,8 @@ export default function MoviesPage() {
               type="text"
               placeholder="Search movies by title..."
               className="input input-bordered input-modern w-full pl-12 h-12 focus:ring-2 focus:ring-primary/20"
-              value={search}
-              onChange={(e) => fetchMovies({ search: e.target.value, page: 1 })}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
 
@@ -88,7 +93,6 @@ export default function MoviesPage() {
           </div>
         </motion.div>
 
-        {/* Content Section */}
         <div className="min-h-[400px]">
           {loading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -125,7 +129,6 @@ export default function MoviesPage() {
           )}
         </div>
 
-        {/* Professional Pagination */}
         {totalPages > 1 && (
           <div className="flex items-center justify-center gap-4 pt-8">
             <button

@@ -84,7 +84,6 @@ export default function SignupPage() {
         <div className="card bg-base-100 shadow-xl">
           <div className="card-body p-6">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-              {/* Name Input */}
               <div className="form-control">
                 <label className="label pb-1">
                   <span className="label-text font-semibold">Full Name</span>
@@ -113,7 +112,6 @@ export default function SignupPage() {
                 </AnimatePresence>
               </div>
 
-              {/* Email Input */}
               <div className="form-control">
                 <label className="label pb-1">
                   <span className="label-text font-semibold">Email</span>
@@ -142,7 +140,6 @@ export default function SignupPage() {
                 </AnimatePresence>
               </div>
 
-              {/* Password Input */}
               <div className="form-control">
                 <label className="label pb-1">
                   <span className="label-text font-semibold">Password</span>
@@ -208,7 +205,6 @@ export default function SignupPage() {
                 </AnimatePresence>
               </div>
 
-              {/* Role Selection */}
               <div className="form-control">
                 <label className="label pb-1">
                   <span className="label-text font-semibold">Account Type</span>

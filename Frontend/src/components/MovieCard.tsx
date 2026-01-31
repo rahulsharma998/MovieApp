@@ -54,14 +54,14 @@ export default function MovieCard({ movie }: { movie: Movie }) {
             </div>
 
             {/* View Details Button */}
-            <motion.button
+            <motion.div
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="btn btn-primary btn-sm w-full gap-2 shadow-lg"
             >
               <Play size={16} className="fill-current" />
               View Details
-            </motion.button>
+            </motion.div>
           </div>
 
           {/* Rating Badge */}

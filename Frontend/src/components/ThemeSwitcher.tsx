@@ -22,40 +22,12 @@ export default function ThemeSwitcher() {
     );
   }
 
-  const themeColors: Record<Theme, string> = {
-    light: 'bg-gradient-to-br from-white to-gray-200',
-    dark: 'bg-gradient-to-br from-slate-900 to-slate-700',
-    cupcake: 'bg-gradient-to-br from-pink-200 to-purple-200',
-    bumblebee: 'bg-gradient-to-br from-yellow-300 to-orange-400',
-    emerald: 'bg-gradient-to-br from-emerald-400 to-teal-500',
-    corporate: 'bg-gradient-to-br from-blue-600 to-indigo-700',
-    synthwave: 'bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500',
-    retro: 'bg-gradient-to-br from-red-400 to-yellow-300',
-    cyberpunk: 'bg-gradient-to-br from-yellow-300 via-pink-500 to-purple-600',
-    valentine: 'bg-gradient-to-br from-pink-300 to-rose-400',
-    halloween: 'bg-gradient-to-br from-orange-500 to-purple-700',
-    garden: 'bg-gradient-to-br from-green-400 to-lime-500',
-    forest: 'bg-gradient-to-br from-green-700 to-emerald-900',
-    aqua: 'bg-gradient-to-br from-cyan-300 to-blue-400',
-    lofi: 'bg-gradient-to-br from-gray-400 to-gray-600',
-    pastel: 'bg-gradient-to-br from-purple-200 to-pink-200',
-    fantasy: 'bg-gradient-to-br from-purple-400 to-pink-500',
-    wireframe: 'bg-gradient-to-br from-white to-gray-300',
-    black: 'bg-gradient-to-br from-black to-gray-800',
-    luxury: 'bg-gradient-to-br from-amber-600 to-yellow-700',
-    dracula: 'bg-gradient-to-br from-purple-900 to-pink-800',
-    cmyk: 'bg-gradient-to-br from-cyan-400 via-magenta-400 to-yellow-400',
-    autumn: 'bg-gradient-to-br from-red-600 to-orange-700',
-    business: 'bg-gradient-to-br from-blue-800 to-slate-900',
-    acid: 'bg-gradient-to-br from-lime-400 to-pink-500',
-    lemonade: 'bg-gradient-to-br from-yellow-200 to-lime-300',
-    night: 'bg-gradient-to-br from-blue-900 to-indigo-950',
-    coffee: 'bg-gradient-to-br from-amber-800 to-brown-900',
-    winter: 'bg-gradient-to-br from-blue-100 to-cyan-200',
-    dim: 'bg-gradient-to-br from-slate-700 to-slate-900',
-    nord: 'bg-gradient-to-br from-slate-600 to-blue-800',
-    sunset: 'bg-gradient-to-br from-orange-400 to-pink-500',
+  const themeColors: Record<string, string> = {
+    light: 'bg-white border border-gray-200',
+    dark: 'bg-slate-900 border border-slate-700',
   };
+
+  const availableThemes = ["light", "dark"];
 
   return (
     <div className="relative">
@@ -89,29 +61,29 @@ export default function ThemeSwitcher() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="absolute right-0 mt-2 w-80 max-h-[70vh] overflow-y-auto z-50 glass-card rounded-2xl shadow-2xl border border-base-content/10 p-4"
+              className="absolute right-0 mt-2 w-80 max-h-[70vh] overflow-y-auto z-50 bg-base-100 rounded-2xl shadow-2xl border border-base-content/10 p-4"
             >
               <div className="flex items-center justify-between mb-4 sticky top-0 bg-base-100/80 backdrop-blur-sm pb-2 border-b border-base-content/10">
                 <h3 className="font-bold text-sm flex items-center gap-2">
                   <Palette size={16} />
                   Choose Theme
                 </h3>
-                <span className="text-xs opacity-50">{DAISYUI_THEMES.length} themes</span>
+                <span className="text-xs opacity-50">{availableThemes.length} themes</span>
               </div>
 
               <div className="grid grid-cols-2 gap-2">
-                {DAISYUI_THEMES.map((themeName) => (
+                {availableThemes.map((themeName) => (
                   <motion.button
                     key={themeName}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => {
-                      setTheme(themeName);
+                      setTheme(themeName as Theme);
                       setIsOpen(false);
                     }}
                     className={`relative p-3 rounded-xl border-2 transition-all group ${theme === themeName
-                        ? 'border-primary shadow-lg shadow-primary/20'
-                        : 'border-base-content/10 hover:border-primary/50'
+                      ? 'border-primary shadow-lg shadow-primary/20'
+                      : 'border-base-content/10 hover:border-primary/50'
                       }`}
                   >
                     <div className="flex items-center gap-2">

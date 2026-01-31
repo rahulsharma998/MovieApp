@@ -78,7 +78,6 @@ export default function AdminDashboard() {
             </Link>
           </div>
 
-          {/* Stats Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((stat, i) => (
               <motion.div
@@ -99,7 +98,6 @@ export default function AdminDashboard() {
             ))}
           </div>
 
-          {/* Table Section */}
           <div className="glass-card rounded-2xl overflow-hidden border border-base-content/5">
             <div className="p-6 border-b border-base-content/5 flex justify-between items-center">
               <h3 className="font-bold text-lg">Movie Library</h3>
@@ -111,7 +109,7 @@ export default function AdminDashboard() {
             <div className="overflow-x-auto">
               <table className="table table-zebra">
                 <thead>
-                  <tr className="bg-base-200/50">
+                  <tr className="bg-base-200">
                     <th className="rounded-none">Movie Title</th>
                     <th>Genre</th>
                     <th>Release</th>
